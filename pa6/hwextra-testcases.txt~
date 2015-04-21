@@ -1,0 +1,95 @@
+Testcases:   
+----------
+Allon Finezilber, Michael Ferrara
+These are some test cases for MALLOC() FREE() Assignment 6 for CS214 Fall 2014
+
+===================================================
+Input 1:
+------
+
+malloc(0);
+
+Output
+------
+The memory space requested is insufficient (0 bytes) in the FILE: 'testcase.c' on LINE: 10
+
+
+===================================================
+Input 2
+------
+int j;
+for(j = 0; j < 3; j++){
+     int* test = malloc(sizeof(int));
+     *test = j;
+     printf("The Memory Address is: %p with Value: %d \n",test, *test);
+
+Output
+------
+
+The Memory Address is: 0x601238 with Value: 0
+The Memory Address is: 0x601254 with Value: 1
+The Memory Address is: 0x601270 with Value: 2
+
+===================================================
+Input 3
+------
+
+ int* test = malloc(sizeof(int));
+ *test = 12;
+ printf("The Memory Address is: %test with Value: %d \n",test, *test);
+ free(test);
+    
+Output
+------
+The Memory Address is: 0x253548 with Value: 12
+The Memory Address is: 0x253548 with Value: 12
+===================================================
+Input 4
+------
+float test;
+free(&test);
+
+Output
+------
+Trying to free memory that was not previously allocated in FILE: 'testcases.c' on LINE: '10'
+
+===================================================
+Input 5
+------
+free(NULL);
+
+Output
+------
+NULL pointer in file, causing free to fail in FILE: 'testcases.c' on LINE: '5'
+
+===================================================
+Input 6
+------
+int j;
+int* test = malloc(3 * sizeof(int));
+for(j = 0; j < 3; j++){
+     test[j] = j;
+ }
+  for(j = 0; j < 5; j++){
+      printf("The Memory Address is: %test with Value: %d \n", test + j, test[j]);
+ }
+    free(test);
+    
+Output
+------
+The Memory Address: 0x601238 with value: 0
+The Memory Address: 0x60123c with value: 1
+The Memory Address: 0x601240 with value: 2
+
+===================================================
+Input 7
+------
+void* test = malloc(1);
+free(test);
+printf("test is free'd\n");
+free(test + 1);
+
+Output
+------
+Trying to free memory that was not previously allocated in FILE: 'testcases.c' on LINE: '15'
+===================================================
